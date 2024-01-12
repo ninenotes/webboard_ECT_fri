@@ -17,12 +17,32 @@ $login = $_POST['login'];
     <Hr>
     <div style="text-align: center;">
     เข้าสู่ระบบด้วย<br>
-    Login =     <?php echo" $login ";  ?>
+    <?php
+    if($login == "admin" && $password == "ad1234"){
+        echo"ยินดีตอนรับคุณ ADMIN";
+        echo"<BR>";
+        echo"<a href=login.html style=float: right;>กลับยังไปหน้าหลัก</a>";
+    }
+    elseif ($login == "member" && $password == "mem1234") {
+        echo"ยินดีตอนรับคุณ MEMBER";
+        echo"<BR>";
+        echo"<a href=login.html style=float: right;>กลับยังไปหน้าหลัก</a>";
+    }
+    else{
+        echo"ชื่อบัญชีหรือรหัสผ่านไม่ถูกตต้อง";
+        echo"<BR>";
+        echo"<a href=login.html style=float: right;>กลับยังไปหน้าหลัก</a>";
+    }
+
+
+
+    ?>
+    <!-- Login =     <?php echo" $login ";  ?>
      <?php echo"<BR>"; ?>
         
     password =  <?php echo" $password"; ?>
 
-   
+    -->
 
 </div>
 

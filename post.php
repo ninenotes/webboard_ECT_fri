@@ -12,7 +12,17 @@
 <h1 style="text-align: center;">Webboard KakKak</h1>
     <Hr>
     <div style="text-align: center;">
-    <?php echo"ต้องการดูกระทู้หมายเลข $id" ?>
+    <?php echo"ต้องการดูกระทู้หมายเลข $id";
+      echo"<BR>";
+    
+    if ($id %2==0) {
+        echo"เป็นกระทู้หมายเลขคู่";
+    }
+    if ($id %2==1) {
+        echo"เป็นกระทู้หมายเลขคี่";
+    }
+    
+    ?>
 
     </div>
 
