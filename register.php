@@ -22,40 +22,66 @@
 <body>
     <h1>สมัครสมาชิก</h1>
     <div class="d-flex justify-content-center">
-        <form action="verify.php" method="POST">
+        <form action="register_save.php" method="POST">
             <div class="card">
-                <div class="card-header text-center">เข้าสู่ระบบ</div>
+            <div class="card-header bg-primary  text-white">เข้าสู่ระบบ</div>
                 <div class="card-body">
                     <div class="row g-3 align-item-center">
                         <div class="col-2   ">
                             <label for="user" class="col-form-label">ชื่อบัญชี : </label>
                         </div>
                         <div class="col-9">
-                            <input type="text" id="user" class="form-control" require>
+                            <input type="text" id="user" name="user" class="form-control" required>
                         </div>
                         <div class="col-2   ">
                             <label for="pwd" class="col-form-label">รหัสผ่าน : </label>
                         </div>
                         <div class="col-9">
-                            <input type="password" id="pwd" class="form-control" require>
+                            <input type="password" name="pwd" id="pwd" class="form-control" required>
                         </div>
                         <div class="col-2">
                             <label for="name" class="col-form-label">ชื่อ - นามสกุล : </label>
                         </div>
                         <div class="col-9">
-                            <input type="password" id="name" class="form-control" require>
+                            <input type="text" id="name" name="name" class="form-control" require>
                         </div>
                         </div>
+                         <div class="row mt-3">
+                            <label class="col-lg-3 form-label">เพศ:</label>
+                            <div class="col-lg-9">
+                                <div class="form-check">
+                                <input type="radio" name="gender"  value="m" class="form-check-input" required>
+                                <label>ชาย</label>
+                                </div>
+                                <div class="form-check">
+                                <input type="radio" name="gender"  value="f" class="form-check-input" required>
+                                <label>หญิง</label>
+                                </div>
+                                <div class="form-check">
+                                <input type="radio" name="gender"  value="o" class="form-check-input" required>
+                                <label>อื่นๆ</label>
+                                </div>
+                            </div>
+                            <label class="col-lg-3 col-form-label">อีเมล:</label>
+                            <div class="col-lg-9">
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                         </div>
+                         <div class="row mt-3">
+                            <div class="col-lg-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary btn-sm me-2">
+                                    <i class="bi bi-save"></i>สมัครสมาชิก
+                                </button>
+
+                            </div>
+                         </div>
+    </form>
                     </div>
                 </div>
-            </div><br>
+            </div>
         </div>
+        <div class="col-lg-3 col-sm-1"></div>
     </div>
-    <center>
-        <form>
-   
-        </form>
-        <p><a href="index.html">กลับไปหน้าหลัก</a></p>
-    </center>
+    <br>
 </body>
 </html>
