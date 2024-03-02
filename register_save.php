@@ -1,21 +1,23 @@
+<?php include "conn.php" ?>
 <?php
 if(isset($_POST['user'])){
     $user = $_POST['user'];
-    $password = $_POST['pwd'];
+    $password = sha1($_POST['pwd']);
     $name = $_POST['name'];
     $gender = $_POST['gender'];
     $email = $_POST['email'];
 
-    $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
-
-    $sql = "INSERT INTO user (login,password,name,gender,email,role) VALUES ('$user','$password','$name','$gender','$email','m')";
-
-    $conn->exec($sql);
+    $sql = "SELECT * FROM `user` WHERE `user`='$user'";
+    $result=$conn->query($sql);
+    if($result->rowCount()==1){
+        $_SESSION['add_user']="error";
+    }else{
+    $sql1 = "INSERT INTO `user`(`user`, `password`, `name`, `gender`, `email`, `role`) VALUES ('$user','$password','$name','$gender','$email','m')";
+    $conn->exec($sql1);
+    $_SESSION['add_user'] = "success";
+    }
     $conn = null;
-    header("location:login.php");
-    die();
-}else{
-    header("location:index.php");
+    header("location:register.php");
     die();
 }
 ?>
