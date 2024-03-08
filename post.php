@@ -21,13 +21,13 @@
     
     <?php
     $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
-    $sql="SELECT post.title,post.content,post.post_date,user.login FROM post INNER JOIN user ON(post.user_id=user.id) WHERE post.id=$_GET[id]";
+    $sql="SELECT post.title,post.content,post.post_date,user.user FROM post INNER JOIN user ON(post.user_id=user.id) WHERE post.id=$_GET[id]";
     $result=$conn->query($sql);
     while($row=$result->fetch()){
 
      echo"   <div class='card boder-primary'>";
      echo"    <div class='card-header bg-primary text-white'>$row[0]</div>";
-     echo"<div class='card-body'>$row[1]</div>";
+     echo"<div class='card-body'>$row[1]<BR><BR>$row[3] -$row[2]</div>";
  
         
         
