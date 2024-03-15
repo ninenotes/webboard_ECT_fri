@@ -21,6 +21,16 @@
     </style>
 </head>
 <body>
+    <script>
+        function OnBlurPwd(){
+            let pwd=document.getElementById("pwd");
+            let pwd2=document.getElementById(pwd2);
+            if(pwd.value!==pwd2.value){
+                alert("รหัสไม่ตรงกัน");
+                pwd2.value="";
+            }
+        }
+    </script>
         <div class="container">
             <h1 class="mt-3 text-center">Webboard</h1>
             <nav class="navbar bg-body-tertiary">
@@ -51,14 +61,20 @@
                                 <div class="row">
                                     <label for="user" class="col-lg-3 col-form-label">ชื่อบัญชี</label>
                                     <div class="col-lg-9">
-                                        <input type="text" name="user" class="form-control" required>
+                                        <input id="user" type="text" name="user" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <label class="col-lg-3 col-form-label" for="pwd">รหัสผ่าน : </label>
                                     <div class="col-lg-9">
-                                        <input type="password" name="pwd" class="form-control" required>
+                                        <input type="password" name="pwd" id="pwd" class="form-control" required>
                                     </div>
+                                    <div class="row mt-3">
+                                    <label class="col-lg-3 col-form-label" for="pwd">ยืนยันรหัส : </label>
+                                    <div class="col-lg-9">
+                                        <input type="password" name="pwd2" id="pwd2" class="form-control"onblur="OnBlurPwd()" required>
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="row mt-3">
                                     <label class="col-lg-3 col-form-label" for="name">ชื่อ - นามสกุล : </label>

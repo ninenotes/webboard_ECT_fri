@@ -34,6 +34,19 @@
     echo"</div>";
     }
 
+    $sql="select comment.content,comment.post_date,user.user
+    from comment inner join user on
+    (comment.user_id=user.id) where comment.post_id=$_GET[id]";
+    $result=$conn->query($sql);
+    $i=1;
+    while($row=$result->fetch()){
+    echo"<div class='card border-info mt-3'>";
+    echo"<div class='card-header bg-info text-white'>ความคิดเห็นที่ $i </div>";
+    echo"<div class='card-body'>$row[0]<br><br>$row[2] - $row[1]</div>";
+    echo"</div>";
+    $i=$i+1;
+    }
+    $conn=null;
     ?>
     <div class="card border-success mt-3">
         <div class="card-header bg-success text-white">

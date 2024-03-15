@@ -3,7 +3,7 @@ include "conn.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +11,21 @@ include "conn.php"
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script>
+         function myFunction(){
+            let r=confirm("ต้องการจะลบ จริงหรือไม่");
+            return r;
+         }
+    </script>
     <style>
         body {
             font-family: sans-serif;
         }
-
+ 
         .text-center {
             text-align: center;
         }
-
+ 
         .login {
             float: right;
             padding-right: 20px;
@@ -27,7 +33,7 @@ include "conn.php"
     </style>
 </head>
 <?php if (!isset($_SESSION['id'])) { ?>
-
+ 
     <body>
         <h1 class="text-center">Webboard</h1>
         <form action="post.php" method="get">
@@ -63,7 +69,7 @@ include "conn.php"
                     </div>
                 </nav><br>
                 <table class="table table-striped">
-                    <?php 
+                    <?php
                     $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
                     $sql1="SELECT t3.name,t1.title,t1.id,t2.user,t1.post_date FROM `post` as t1 INNER JOIN `user` as t2 ON (t1.user_id=t2.id) INNER JOIN `category` as t3 ON (t1.cat_id=t3.id) ORDER BY t1.post_date DESC";
                     $result = $conn->query($sql1);
@@ -127,14 +133,14 @@ include "conn.php"
                     </div>
                 </nav><br>
                 <table class="table table-striped">
-                <?php 
+                <?php
                     $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
                     $sql1="SELECT t3.name,t1.title,t1.id,t2.user,t1.post_date FROM `post` as t1 INNER JOIN `user` as t2 ON (t1.user_id=t2.id) INNER JOIN `category` as t3 ON (t1.cat_id=t3.id) ORDER BY t1.post_date DESC";
                     $result = $conn->query($sql1);
                     while($row = $result->fetch()){
                         echo "<tr><td class='col-11'>[$row[0]]<a href=post.php?id=$row[2] style=text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</td>";
                         if (isset($_SESSION['id']) && $_SESSION['role'] == 'a') {
-                            echo "<td class='col-1'><a href='delete.php?id=$row[2]' class='btn btn-danger'>ลบ</a></td></tr>";
+                            echo "<td class='col-1'><a href='delete.php?id=$row[2]' class='btn btn-danger' onclick='return myFunction()'>ลบ</a></td></tr>";
                     }
                 }
                     $conn=null;
